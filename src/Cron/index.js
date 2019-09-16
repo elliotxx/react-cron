@@ -839,16 +839,16 @@ class CRON extends React.Component {
                       {children}
                     </Select>
                 </Radio>
-                // <Radio style={radioStyle} value={4}>
-                //   {i18n.monthweek} <InputNumber disabled={weekRadiochecked !== 4} min={1} max={5} value={weekStart} size="small" onChange={this.weekStart} style={{ width: 100 }} /> {i18n.week3}
-                //   {i18n.week2} <Select disabled={weekRadiochecked !== 4} value={weekEvery} size="small" onChange={this.weekEvery} style={{ width: 100 }} >
-                //     {children}
-                //                </Select>
-                // </Radio>
-                // <Radio style={radioStyle} value={5}>{i18n.weekend} <Select disabled={weekRadiochecked !== 5} value={weekEnd} size="small" onChange={this.changeweekEnd} style={{ width: 100 }} >
-                //   {children}
-                //                                                    </Select>
-                // </Radio>
+                <Radio style={radioStyle} value={4}>
+                  {i18n.monthweek} <InputNumber disabled={weekRadiochecked !== 4} min={1} max={5} value={weekStart} size="small" onChange={this.weekStart} style={{ width: 100 }} /> {i18n.week3}
+                  {i18n.week2} <Select disabled={weekRadiochecked !== 4} value={weekEvery} size="small" onChange={this.weekEvery} style={{ width: 100 }} >
+                    {children}
+                               </Select>
+                </Radio>
+                <Radio style={radioStyle} value={5}>{i18n.weekend} <Select disabled={weekRadiochecked !== 5} value={weekEnd} size="small" onChange={this.changeweekEnd} style={{ width: 100 }} >
+                  {children}
+                                                                   </Select>
+                </Radio>
                 <Radio style={radioStyle} value={6}>{i18n.appoint}<br />
                   <CheckboxGroup value={weekChecked.split(',')} style={{ width: '100%' }} onChange={this.onWeekCheckChange} >
                     <Row> {this.createChecks(weekOptions, weekRadiochecked, 6)} </Row>
