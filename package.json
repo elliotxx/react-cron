@@ -29,6 +29,9 @@
     "classnames": "2.x"
   },
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "antd": "^3.23.2",
+    "react": "^16.9.0"
+  },
   "devDependencies": {}
 }

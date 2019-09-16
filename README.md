@@ -25,10 +25,10 @@ style依赖
 
 
 
-yarn add react-crons   npm install react-crons --save
+yarn add ant-react-crons   npm install ant-react-crons --save
 
 
-import {Cron, InputCron} from 'react-crons'
+import {Cron, InputCron} from 'ant-react-crons'
 
 
 
@@ -38,7 +38,7 @@ Cron
     style // 内容的style
     className
     lang // 支持zh_CN/zh-CN/zh-Hans-CN/en_US/en-US
-    type={['second', 'minute', 'hour', 'day', 'month', 'week']}
+    type={['minute', 'hour', 'day', 'month', 'week']}
 
 
 InputCron
@@ -47,7 +47,7 @@ InputCron
     style // 内容的style
     width // input 的宽度
     lang // 支持zh_CN/zh-CN/zh-Hans-CN/en_US/en-US
-    type={['second', 'minute', 'hour', 'day', 'month', 'week']}
+    type={['minute', 'hour', 'day', 'month', 'week']}
 
 ```
 
@@ -58,7 +58,7 @@ InputCron
     value
     style={{ width: 576 }}
     lang='zh_CN'
-    type={['second', 'minute', 'hour', 'day', 'month', 'week']}
+    type={['minute', 'hour', 'day', 'month', 'week']}
 />
 ```
 ## 2.cron表达式
@@ -69,7 +69,7 @@ InputCron
     className
     style={{ width: 576 }}
     lang='zh_CN'
-    type={['second', 'minute', 'hour', 'day', 'month', 'week']}
+    type={['minute', 'hour', 'day', 'month', 'week']}
 />
 ```
 ## LICENSE
