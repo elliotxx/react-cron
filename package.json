@@ -1,9 +1,9 @@
 {
-  "name": "ant-react-crons",
+  "name": "antcloud-react-crons",
   "version": "1.7.2",
-  "description": "ant-react-cron 定时表达式(forked from chensongtao/react-cron)",
+  "description": "antcloud-react-crons 定时表达式(forked from chensongtao/react-cron)",
   "keywords": [
-    "ant-react-cron",
+    "antcloud-react-crons",
     "cron",
     "定时任务"
   ],

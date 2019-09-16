@@ -1,4 +1,4 @@
-# react-crons
+# antcloud-react-crons
 基于 chensongtao/react-cron 进行改造。
 
 改造内容：
@@ -25,10 +25,10 @@ style依赖
 
 
 
-yarn add ant-react-crons   npm install ant-react-crons --save
+yarn add antcloud-react-crons   npm install antcloud-react-crons --save
 
 
-import {Cron, InputCron} from 'ant-react-crons'
+import {Cron, InputCron} from 'antcloud-react-crons'
 
 
 
