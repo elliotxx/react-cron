@@ -1,9 +1,9 @@
 {
-  "name": "react-crons",
+  "name": "ant-react-crons",
   "version": "1.7.2",
-  "description": "react-cron 定时表达式",
+  "description": "ant-react-cron 定时表达式(forked from chensongtao/react-cron)",
   "keywords": [
-    "react-cron",
+    "ant-react-cron",
     "cron",
     "定时任务"
   ],
@@ -11,12 +11,12 @@
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "authors": {
-    "name": "senter.chen",
-    "email": "chensongtao5@gmail.com"
+    "name": "elliotxx",
+    "email": "951376975@qq.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/chensongtao/react-cron.git"
+    "url": "https://github.com/elliotxx/react-cron.git"
   },
   "scripts": {
     "dev": "umi-lib doc dev",

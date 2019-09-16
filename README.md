@@ -1,5 +1,8 @@
 # react-crons
+基于 chensongtao/react-cron 进行改造。
 
+改造内容：
+1. 去掉 秒，兼容 Unix Cron
 
 
 ## Usage
