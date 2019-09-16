@@ -24,9 +24,9 @@ class CRON extends React.Component {
   constructor(props) {
     super(props);
     const { value , type = ['minute', 'hour', 'day', 'month'] } = props;
-    const values = value && value !== '' && cronValidate(value) ? value : '0 0 0 * * ?';
+    const values = value && value !== '' && cronValidate(value) ? value : '0 * * * ?';
     const cronArr = values.split(' ');
-    const time = ['second', 'minute', 'hour', 'day', 'month', 'week'];
+    const time = ['minute', 'hour', 'day', 'month', 'week'];
     let TabsActiveKey = 1;
     for (let i = 0; i < time.length; i++) {
       if (type.indexOf(time[i]) > -1) {
@@ -36,27 +36,27 @@ class CRON extends React.Component {
     }
 
     // 秒
-    const second = cronArr[0];
-    let secondCycleStart = 1;
-    let secondCycleEnd = 1;
-    let secondStart = 1;
-    let secondEvery = 1;
-    let secondChecked = '0';
-    let SecondRadiochecked = 1;
-    if (second === '*') {
-      SecondRadiochecked = 1;
-    } else if (second.indexOf('-') > -1) {
-      SecondRadiochecked = 2;
-      [secondCycleStart, secondCycleEnd] = second.split('-');
-    } else if (second.indexOf('/') > -1) {
-      SecondRadiochecked = 3;
-      [secondStart, secondEvery] = second.split('/');
-    } else {
-      SecondRadiochecked = 4;
-      secondChecked = second;
-    }
+    // const second = cronArr[0];
+    // let secondCycleStart = 1;
+    // let secondCycleEnd = 1;
+    // let secondStart = 1;
+    // let secondEvery = 1;
+    // let secondChecked = '0';
+    // let SecondRadiochecked = 1;
+    // if (second === '*') {
+    //   SecondRadiochecked = 1;
+    // } else if (second.indexOf('-') > -1) {
+    //   SecondRadiochecked = 2;
+    //   [secondCycleStart, secondCycleEnd] = second.split('-');
+    // } else if (second.indexOf('/') > -1) {
+    //   SecondRadiochecked = 3;
+    //   [secondStart, secondEvery] = second.split('/');
+    // } else {
+    //   SecondRadiochecked = 4;
+    //   secondChecked = second;
+    // }
     // 分
-    const minute = cronArr[1];
+    const minute = cronArr[0];
     let minuteCycleStart = 1;
     let minuteCycleEnd = 1;
     let minuteStart = 1;
@@ -76,7 +76,7 @@ class CRON extends React.Component {
       minuteChecked = minute;
     }
     // 时
-    const hour = cronArr[2];
+    const hour = cronArr[1];
     let hourCycleStart = 1;
     let hourCycleEnd = 1;
     let hourStart = 1;
@@ -97,7 +97,7 @@ class CRON extends React.Component {
     }
 
     // 天
-    const day = cronArr[3];
+    const day = cronArr[2];
     let daysCycleStart = 1;
     let daysCycleEnd = 1;
     let daysStart = 1;
@@ -126,7 +126,7 @@ class CRON extends React.Component {
     }
 
     // 月
-    const month = cronArr[4];
+    const month = cronArr[3];
     let monthCycleStart = 1;
     let monthCycleEnd = 1;
     let monthStart = 1;
@@ -147,7 +147,7 @@ class CRON extends React.Component {
     }
 
     // 周
-    const week = cronArr[5];
+    const week = cronArr[4];
     let weekCycleStart = 'MON';
     let weekCycleEnd = 'MON';
     let weekStart = 1; // 指定第几周
@@ -174,7 +174,7 @@ class CRON extends React.Component {
     }
 
     this.state = {
-      secondVal: second, // 秒
+      // secondVal: second, // 秒
       minVal: minute, // 分
       hourVal: hour, // 时
       dayOfMonVal: day, // 天
@@ -182,12 +182,12 @@ class CRON extends React.Component {
       dayOfWekVal: week, // 周
       yearVal: '', // 年
 
-      secondCycleStart, // 周期开始
-      secondCycleEnd, // 周期结束
-      secondStart, // CRON-秒-几秒开始
-      secondEvery, // CRON-秒-每几秒执行一次
-      secondChecked, // CRON-秒-默认指定多选
-      SecondRadiochecked, // CRON-秒-单选按钮
+      // secondCycleStart, // 周期开始
+      // secondCycleEnd, // 周期结束
+      // secondStart, // CRON-秒-几秒开始
+      // secondEvery, // CRON-秒-每几秒执行一次
+      // secondChecked, // CRON-秒-默认指定多选
+      // SecondRadiochecked, // CRON-秒-单选按钮
 
       minuteCycleStart, // 分
       minuteCycleEnd,
@@ -263,65 +263,65 @@ class CRON extends React.Component {
   }
   // ---------------------------------------秒-------------------------------------------------------------------------------------
   // CRON-秒-radio选择回调
-  onSecondRadioChange = (e) => {
-    const SecondRadiochecked = e.target.value;
-    this.setState({ SecondRadiochecked });
-    // eslint-disable-next-line default-case
-    switch (SecondRadiochecked) {
-      case 1: this.changeState({ secondVal: '*' }); break;
-      case 2: this.changeState({ secondVal: `${this.state.secondCycleStart}-${this.state.secondCycleEnd}` }); break;
-      case 3: this.changeState({ secondVal: `${this.state.secondStart}/${this.state.secondEvery}` }); break;
-      case 4: this.changeState({ secondVal: this.state.secondChecked }); break;
-    }
-  }
+  // onSecondRadioChange = (e) => {
+  //   const SecondRadiochecked = e.target.value;
+  //   this.setState({ SecondRadiochecked });
+  //   // eslint-disable-next-line default-case
+  //   switch (SecondRadiochecked) {
+  //     case 1: this.changeState({ secondVal: '*' }); break;
+  //     case 2: this.changeState({ secondVal: `${this.state.secondCycleStart}-${this.state.secondCycleEnd}` }); break;
+  //     case 3: this.changeState({ secondVal: `${this.state.secondStart}/${this.state.secondEvery}` }); break;
+  //     case 4: this.changeState({ secondVal: this.state.secondChecked }); break;
+  //   }
+  // }
 
-  // CRON-秒-指定周期-周期开始值输入框的回调
-  secondCycleStart = (value) => {
-    this.setState({ secondCycleStart: value });
-    if (this.state.SecondRadiochecked === 2) {
-      this.changeState({
-        secondVal: `${value}-${this.state.secondCycleEnd}`,
-      });
-    }
-  };
-  // CRON-秒-指定周期-周期结束值输入框的回调
-  secondCycleEnd = (value) => {
-    this.setState({ secondCycleEnd: value });
-    if (this.state.SecondRadiochecked === 2) {
-      this.changeState({
-        secondVal: `${this.state.secondCycleStart}-${value}`,
-      });
-    }
-  };
+  // // CRON-秒-指定周期-周期开始值输入框的回调
+  // secondCycleStart = (value) => {
+  //   this.setState({ secondCycleStart: value });
+  //   if (this.state.SecondRadiochecked === 2) {
+  //     this.changeState({
+  //       secondVal: `${value}-${this.state.secondCycleEnd}`,
+  //     });
+  //   }
+  // };
+  // // CRON-秒-指定周期-周期结束值输入框的回调
+  // secondCycleEnd = (value) => {
+  //   this.setState({ secondCycleEnd: value });
+  //   if (this.state.SecondRadiochecked === 2) {
+  //     this.changeState({
+  //       secondVal: `${this.state.secondCycleStart}-${value}`,
+  //     });
+  //   }
+  // };
+  //
+  //
+  // // CRON-秒-指定从几秒开始
+  // secondStart = (value) => {
+  //   this.setState({ secondStart: value });
+  //   if (this.state.SecondRadiochecked === 3) {
+  //     this.changeState({
+  //       secondVal: `${value}/${this.state.secondEvery}`,
+  //     });
+  //   }
+  // };
+  // // CRON-秒-指定每几秒执行一次
+  // secondEvery = (value) => {
+  //   this.setState({ secondEvery: value });
+  //   if (this.state.SecondRadiochecked === 3) {
+  //     this.changeState({
+  //       secondVal: `${this.state.secondStart}/${value}`,
+  //     });
+  //   }
+  // };
 
-
-  // CRON-秒-指定从几秒开始
-  secondStart = (value) => {
-    this.setState({ secondStart: value });
-    if (this.state.SecondRadiochecked === 3) {
-      this.changeState({
-        secondVal: `${value}/${this.state.secondEvery}`,
-      });
-    }
-  };
-  // CRON-秒-指定每几秒执行一次
-  secondEvery = (value) => {
-    this.setState({ secondEvery: value });
-    if (this.state.SecondRadiochecked === 3) {
-      this.changeState({
-        secondVal: `${this.state.secondStart}/${value}`,
-      });
-    }
-  };
-
-  // CRON-秒-指定选择复选框
-  onSecndcheckChange=(checkedValues) => {
-    const secondChecked = checkedValues.length > 0 ? checkedValues.join(',') : '0';
-    this.setState({ secondChecked });
-    if (this.state.SecondRadiochecked === 4) {
-      this.changeState({ secondVal: secondChecked });
-    }
-  };
+  // // CRON-秒-指定选择复选框
+  // onSecndcheckChange=(checkedValues) => {
+  //   const secondChecked = checkedValues.length > 0 ? checkedValues.join(',') : '0';
+  //   this.setState({ secondChecked });
+  //   if (this.state.SecondRadiochecked === 4) {
+  //     this.changeState({ secondVal: secondChecked });
+  //   }
+  // };
   // ---------------------------------------秒-------------------------------------------------------------------------------------
 
 
@@ -624,8 +624,8 @@ class CRON extends React.Component {
       case 3: this.setState({ yearVal: `${this.state.yearCycleStart}-${this.state.yearCycleEnd}` }); break;
     }
     if (yearRadiochecked != 2) {
-      const { secondVal, minVal, hourVal, dayOfMonVal, MonVal, dayOfWekVal } = this.state;
-      if (secondVal == '*') { this.setState({ secondVal: '0' }); }
+      const { minVal, hourVal, dayOfMonVal, MonVal, dayOfWekVal } = this.state;
+      // if (secondVal == '*') { this.setState({ secondVal: '0' }); }
       if (minVal == '*') { this.setState({ minVal: '0' }); }
       if (hourVal == '*') { this.setState({ hourVal: '0' }); }
       if (dayOfMonVal == '*') { this.setState({ dayOfMonVal: '0' }); }
@@ -650,7 +650,7 @@ class CRON extends React.Component {
 
   creatCron = () => {
     const {
-      secondVal,
+      // secondVal,
       minVal,
       hourVal,
       dayOfMonVal,
@@ -658,8 +658,8 @@ class CRON extends React.Component {
       dayOfWekVal,
       yearVal,
     } = this.state;
-    const str = `${secondVal} ${
-      minVal} ${
+    // const str = `${secondVal} ${
+    const str = `${minVal} ${
       hourVal} ${
       dayOfMonVal} ${
       MonVal} ${
@@ -676,12 +676,12 @@ class CRON extends React.Component {
       lineHeight: '30px',
     };
     const {
-      SecondRadiochecked = '1',
-      secondCycleStart,
-      secondCycleEnd,
-      secondStart,
-      secondEvery,
-      secondChecked,
+      // SecondRadiochecked = '1',
+      // secondCycleStart,
+      // secondCycleEnd,
+      // secondStart,
+      // secondEvery,
+      // secondChecked,
 
       minuteCycleStart,
       minuteCycleEnd,
@@ -735,27 +735,6 @@ class CRON extends React.Component {
     return (
       <div className={Cls} style={style}>
         <Tabs defaultActiveKey={String(TabsActiveKey)} onChange={this.callback}>
-          {
-              this.isShowDom('second', type) &&
-              <TabPane tab={i18n.second} key="1">
-                <RadioGroup name="radiogroup" value={SecondRadiochecked} onChange={this.onSecondRadioChange}>
-                  <Radio style={radioStyle} value={1}>{i18n.EverySecond}</Radio>
-                  <Radio style={radioStyle} value={2}>
-                    {i18n.from} <InputNumber disabled={SecondRadiochecked !== 2} min={0} max={59} value={secondCycleStart} size="small" onChange={this.secondCycleStart} style={{ width: 100 }} />
-                    &nbsp;- <InputNumber disabled={SecondRadiochecked !== 2} min={0} max={59} value={secondCycleEnd} size="small" onChange={this.secondCycleEnd} style={{ width: 100 }} /> {i18n.second1}
-                  </Radio>
-                  <Radio style={radioStyle} value={3}>
-                    {i18n.from} <InputNumber disabled={SecondRadiochecked !== 3} min={0} max={59} value={secondStart} size="small" onChange={this.secondStart} style={{ width: 100 }} /> {i18n.secondstart}
-                    {i18n.Every} <InputNumber disabled={SecondRadiochecked !== 3} min={0} max={59} value={secondEvery} size="small" onChange={this.secondEvery} style={{ width: 100 }} /> {i18n.second1}{i18n.doOne}
-                  </Radio>
-                  <Radio style={radioStyle} value={4}>{i18n.appoint}<br />
-                    <CheckboxGroup value={secondChecked.split(',')} style={{ width: '100%' }} onChange={this.onSecndcheckChange} >
-                      <Row> {this.createChecks(options, SecondRadiochecked, 4)} </Row>
-                    </CheckboxGroup>
-                  </Radio>
-                </RadioGroup>
-              </TabPane>
-          }
           {
             this.isShowDom('minute', type) &&
             <TabPane tab={i18n.minute} key="2">

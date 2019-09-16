@@ -11,47 +11,47 @@
   //alert("校验函数的开始！");
   var cronParams = cronExpression.split(" ");
 
-  if (cronParams.length < 6 || cronParams.length > 7) {
+  if (cronParams.length < 5 || cronParams.length > 6) {
     return false;
   }
 
   //CronTrigger cronTrigger = new CronTrigger();
   //cronTrigger.setCronExpression( cronExpression );
 
-  if (cronParams[3] == "?" || cronParams[5] == "?") {
+  if (cronParams[2] == "?" || cronParams[4] == "?") {
     //Check seconds param
-    if (!checkSecondsField(cronParams[0])) {
-      return false;
-    }
+    // if (!checkSecondsField(cronParams[0])) {
+    //   return false;
+    // }
 
     //Check minutes param
-    if (!checkMinutesField(cronParams[1])) {
+    if (!checkMinutesField(cronParams[0])) {
       return false;
     }
 
     //Check hours param
-    if (!checkHoursField(cronParams[2])) {
+    if (!checkHoursField(cronParams[1])) {
       return false;
     }
 
     //Check day-of-month param
-    if (!checkDayOfMonthField(cronParams[3])) {
+    if (!checkDayOfMonthField(cronParams[2])) {
       return false;
     }
 
     //Check months param
-    if (!checkMonthsField(cronParams[4])) {
+    if (!checkMonthsField(cronParams[3])) {
       return false;
     }
 
     //Check day-of-week param
-    if (!checkDayOfWeekField(cronParams[5])) {
+    if (!checkDayOfWeekField(cronParams[4])) {
       return false;
     }
 
     //Check year param
-    if (cronParams.length == 7) {
-      if (!checkYearField(cronParams[6])) {
+    if (cronParams.length == 6) {
+      if (!checkYearField(cronParams[5])) {
         return false;
       }
     }
@@ -62,15 +62,15 @@
   }
 }
 
-function checkSecondsField(secondsField) {
-  return checkField(secondsField, 0, 59);
-}
+// function checkSecondsField(secondsField) {
+//   return checkField(secondsField, 0, 59);
+// }
 
 
-function checkField(secondsField, minimal, maximal) {
-  if (secondsField.indexOf("-") > -1) {
-    var startValue = secondsField.substring(0, secondsField.indexOf("-"));
-    var endValue = secondsField.substring(secondsField.indexOf("-") + 1);
+function checkField(filed, minimal, maximal) {
+  if (filed.indexOf("-") > -1) {
+    var startValue = filed.substring(0, filed.indexOf("-"));
+    var endValue = filed.substring(filed.indexOf("-") + 1);
 
     if (!(checkIntValue(startValue, minimal, maximal, true) && checkIntValue(endValue, minimal, maximal, true))) {
       return false;
@@ -83,14 +83,14 @@ function checkField(secondsField, minimal, maximal) {
     } catch (e) {
       return false;
     }
-  } else if (secondsField.indexOf(",") > -1) {
-    return checkListField(secondsField, minimal, maximal);
-  } else if (secondsField.indexOf("/") > -1) {
-    return checkIncrementField(secondsField, minimal, maximal);
-  } else if (secondsField.indexOf("*") != -1) {
+  } else if (filed.indexOf(",") > -1) {
+    return checkListField(filed, minimal, maximal);
+  } else if (filed.indexOf("/") > -1) {
+    return checkIncrementField(filed, minimal, maximal);
+  } else if (filed.indexOf("*") != -1) {
     return true;
   } else {
-    return checkIntValue(secondsField, minimal, maximal);
+    return checkIntValue(filed, minimal, maximal);
   }
 }
 
