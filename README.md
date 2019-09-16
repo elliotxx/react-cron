@@ -4,6 +4,7 @@
 改造内容：
 1. 去掉 秒，兼容 Unix Cron
 2. 修复 weekday 那一栏 cronValidate 总是失败的 bug
+3. 移除 cron 表达式的顺序校验
 
 ## Usage
     

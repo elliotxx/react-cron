@@ -323,11 +323,13 @@ function checkListField(value, minimal, maximal) {
     try {
       var val = parseInt(currentValue, 10);
 
-      if (val <= previousValue) {
-        return false;
-      } else {
-        previousValue = val;
-      }
+      previousValue = val;
+
+      // if (val <= previousValue) {
+      //   return false;
+      // } else {
+      //   previousValue = val;
+      // }
     } catch (e) {
       // we have always an int
     }
