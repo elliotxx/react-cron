@@ -45,9 +45,9 @@
     }
 
     //Check day-of-week param
-    if (!checkDayOfWeekField(cronParams[4])) {
-      return false;
-    }
+    // if (!checkDayOfWeekField(cronParams[4])) {
+    //   return false;
+    // }
 
     //Check year param
     if (cronParams.length == 6) {
