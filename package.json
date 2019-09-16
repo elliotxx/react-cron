@@ -1,6 +1,6 @@
 {
   "name": "antcloud-react-crons",
-  "version": "1.7.3",
+  "version": "1.7.4",
   "description": "antcloud-react-crons 定时表达式(forked from chensongtao/react-cron)",
   "keywords": [
     "antcloud-react-crons",
